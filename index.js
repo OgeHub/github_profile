@@ -6,13 +6,15 @@ form.addEventListener("submit", (e) => {
     const url = "https://api.github.com/users/" + username;
    
     fetch(url).then(res => res.json()).then(data =>{
-
+        const fullName = data.name;
+        if(fullName === null) {
+            window.alert("Invalid username");
+        } else {
         const userId = data.id;
         const imgUrl = "https://avatars.githubusercontent.com/u/" +userId+ "?v=4"
         const userName = data.login;
         const followers = data.followers;
         const repoCount = data.public_repos;
-        const fullName = data.name;
         const repoUrl = "https://api.github.com/users/" + userName + "/repos";
         
         document.getElementById("photo").innerHTML = `<img src="${imgUrl}" class="rounded float-start photoStyle"/>`
@@ -24,10 +26,14 @@ form.addEventListener("submit", (e) => {
         <p><span class="title">Repository Count:</span> ${repoCount}</p>
         ` 
         fetch(repoUrl).then(repos => repos.json()).then(repo => {
-            const repo1 = repo[repo.length - 1].name;
-            const repo2 = repo[repo.length - 2].name;
-            const repo3 = repo[repo.length - 3].name;
-            const repo4 = repo[repo.length - 4].name;
+            const sRepo = repo.sort(function(a,b) {
+                return new Date(b.created_at) - new Date(a.created_at);
+            });
+
+            const repo1 = sRepo[0].name;
+            const repo2 = sRepo[1].name;
+            const repo3 = sRepo[2].name;
+            const repo4 = sRepo[3].name;
 
 
             document.getElementById("topRepos").innerHTML = `
@@ -37,7 +43,9 @@ form.addEventListener("submit", (e) => {
             <p>${repo3}</p>
             <p>${repo4}</p>
             `
-        })
+        });
+        }
+        
 
     });
 

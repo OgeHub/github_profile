@@ -1,0 +1,72 @@
+body {
+    background-color: #ecd1ff;
+    color: #7027A0;
+    font-family: Saira;
+}
+
+.app {
+    color: #7027A0;
+    background-color: #d5b0ee;
+    font-family: Acme;
+}
+
+.int-div {
+    width: 18rem;
+    margin-top: 2.8rem;
+}
+
+.int:focus {
+    box-shadow: none;
+    border: 4px solid #7027A0;
+}
+
+.btn-int {
+    background-color: #7027A0;
+    color: #FEFBF3;
+}
+
+.btn-int:hover {
+    box-shadow: none;
+    color: #7027A0;
+    background-color: #d5b0ee;
+}
+.btn-int:focus {
+    box-shadow: none;
+}
+
+.photoStyle {
+    width: 15rem;
+    height: 15rem;
+    border: 4px solid blueviolet;
+}
+
+.title {
+    font-weight: bolder;
+    color: #7027A0;
+}
+
+.result-div {
+    margin-top: 4rem;
+}
+
+.ft {
+    position: absolute;
+    top: 35rem;
+    text-align: center;
+    background-color: #d5b0ee;
+}
+
+@media only screen and (max-width: 600px) {
+
+    .result-div {
+        margin-top: 2rem;
+    }
+    .photoStyle {
+        width: 9.8rem;
+        height: 9.8rem;
+    }
+    .ft {
+        position: absolute;
+        top: 44rem;
+    }
+  }
